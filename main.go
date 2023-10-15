@@ -93,7 +93,7 @@ func (a *App) createUser(c *gin.Context) {
 }
 
 func (a *App) deleteUser(c *gin.Context) {
-	id := c.Params
+	id := c.Param("id")
 	var u User
 	err := a.DB.QueryRow("SELECT * FROM users WHERE id = $1", id).Scan(&u.ID, &u.Name, &u.Email)
 	if err != nil {
